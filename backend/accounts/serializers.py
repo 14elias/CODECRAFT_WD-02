@@ -5,6 +5,7 @@ class EmployeeSerializer(ModelSerializer):
     class Meta:
         model = Employee
         fields=['id','first_name','last_name','email','department','position','salary','date_hired','phone_number','created_by']
+        read_only_fields=['created_by']
     
     def create(self,validated_data):
         user=self.context['request'].user
