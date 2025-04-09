@@ -7,6 +7,7 @@ class EmployeeSerializer(ModelSerializer):
         fields=['id','first_name','last_name','email','department','position','salary','date_hired','phone_number','created_by']
     
     def create(self,validated_data):
-        employee=Employee.objects.create(crated_by = self.context['created_by'],**validated_data)
+        user=self.context['request'].user
+        employee=Employee.objects.create(created_by = user,**validated_data)
         employee.save()
         return employee
