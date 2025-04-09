@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+
+# Virtualenv
+env/
+venv/
+ENV/
+
+# IDEs
+.vscode/
+.idea/
+
+# Django static/media files
+staticfiles/
+media/
+
+# Env file
+*.env
+
+# Migrations (optional)
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# Windows system files
+Thumbs.db
+Desktop.ini
+.env
