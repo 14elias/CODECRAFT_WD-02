@@ -5,6 +5,8 @@ from rest_framework_simplejwt.views import (
 )
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     def post(self,request,*args,**kwargs):
@@ -67,3 +69,27 @@ class CustomTokenRefreshView(TokenRefreshView):
             return res
         except Exception as e:
             return Response({'message': "Something went wrong"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class isAuthenticated(APIView):
+    permission_classes = [IsAuthenticated]
+    def get(self,request):
+        return ({'message':'authenticated'})
+    
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+    def post(self,request):
+        access_token = request.COOKIES.get('access_token')
+        if not access_token:
+            return Response('no access token')
+        
+        refresh_token = request.COOKIES.get('refresh_token')
+        if not refresh_token:
+            return Response("no refresh token")
+        
+        response = Response({'message':"successfully logged out "}, status = status.HTTP_202_ACCEPTED)
+
+        response.delete_cookie('access_token', path='/')
+        response.delete_cookie('refresh_token', path='/')
+
+        return response
