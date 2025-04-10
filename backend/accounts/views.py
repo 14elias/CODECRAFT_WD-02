@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAdminUser,IsAuthenticated
 from rest_framework import status
@@ -8,24 +8,25 @@ from .serializers import EmployeeSerializer
 
 class EmployeeView(APIView):
     permission_classes=[IsAuthenticated,IsAdminUser]
-    def post(self,request):
+    def post(self,request,*args,**kwargs):
         serializer = EmployeeSerializer(data=request.data, context={'request':request})
         serializer.is_valid(raise_exception=True)
-        serializer.save
+        serializer.save()
         return Response(serializer.data)
-    def get(self,request):
+    def get(self,request,*args,**kwargs):
         employee = Employee.objects.all()
         serializer = EmployeeSerializer(employee,many=True)
         return Response(serializer.data)
 
 class EmployeeSpecificView(APIView):
+    permission_classes=[IsAuthenticated]
     def get(self,request,*args,**kwargs):
-        employee=Employee.objects.get(id=self.kwargs['pk'])
+        employee=get_object_or_404(Employee, id=self.kwargs['pk'])
         serializer=EmployeeSerializer(employee,many=False)
         return Response(serializer.data)
     
     def patch(self,request,*args,**kwargs):
-        employee=Employee.objects.get(id=self.kwargs['pk'])
+        employee=get_object_or_404(Employee, id=self.kwargs['pk'])
         serializer=EmployeeSerializer(employee,data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
