@@ -74,7 +74,7 @@ class CustomTokenRefreshView(TokenRefreshView):
 class isAuthenticated(APIView):
     permission_classes = [IsAuthenticated]
     def get(self,request):
-        return ({'message':'authenticated'})
+        return Response({'message':'authenticated'})
     
 class LogoutView(APIView):
     permission_classes = [IsAuthenticated]
