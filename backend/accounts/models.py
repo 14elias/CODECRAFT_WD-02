@@ -8,7 +8,7 @@ class Employee(models.Model):
     department = models.CharField(max_length=100)
     position = models.CharField(max_length=100)
     salary = models.DecimalField(max_digits=10, decimal_places=2)
-    date_hired = models.DateField()
+    date_hired = models.DateField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     phone_number = models.CharField(max_length = 10)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
