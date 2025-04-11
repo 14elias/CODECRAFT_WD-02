@@ -9,14 +9,19 @@ import {
     VStack,
     Heading,
 } from "@chakra-ui/react";
+import { login } from "../api/endpoints";
 
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [message,setMessage] = useState('')
     const navigate = useNavigate();
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
+        const response = await login(username,password);
+        setMessage(response.data);
         navigate('/');
+        return response.data;
     };
 
     return (
@@ -62,6 +67,15 @@ function Login() {
                     >
                         Login
                     </Button>
+                    {message && (
+                        <Box
+                            mt={4}
+                            color={message.toLowerCase().includes("error") ? "red.500" : "green.500"}
+                            textAlign="center"
+                        >
+                            {message}
+                        </Box>
+                    )}
                 </VStack>
             </Box>
         </Box>
