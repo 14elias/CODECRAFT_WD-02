@@ -51,7 +51,6 @@ class CustomTokenRefreshView(TokenRefreshView):
     def post(self,request,*args,**kwargs):
         try:
             refresh_token= request.COOKIES.get('refresh_token')
-            print(refresh_token)
 
             if not refresh_token:
                 return Response(
