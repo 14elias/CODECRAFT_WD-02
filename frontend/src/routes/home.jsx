@@ -1,7 +1,10 @@
 import { Box, Heading } from "@chakra-ui/react";
+import NavBar from "../components/navbar";
 
 function Home() {
     return (
+        <>
+        <NavBar/>
         <Box
             display="flex"
             alignItems="center"
@@ -14,6 +17,7 @@ function Home() {
                 Hello Everyone
             </Heading>
         </Box>
+        </>
     );
 }
 
