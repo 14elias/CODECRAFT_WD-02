@@ -12,20 +12,19 @@ function ProtectedRoute({ children }) {
             if (response.message === "authenticated") {
                 setIsAuthenticated(true);
             } else {
-                setIsAuthenticated(false);
-                navigate("/login"); 
+                setIsAuthenticated(false)
+                navigate("/login");
             }
         };
         fetchAuthStatus();
     }, [navigate]);
 
-
-    if (isAuthenticated === null) {
-        return <h1>Loading...</h1>;
+    if(isAuthenticated===null){
+        return <p>loading...</p>
     }
 
-    
-    return isAuthenticated ? children : null;
+
+    return isAuthenticated ? children : (<h1>authorization is mandatory</h1>);
 }
 
 export default ProtectedRoute;
