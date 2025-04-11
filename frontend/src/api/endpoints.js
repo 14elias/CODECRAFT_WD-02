@@ -58,3 +58,13 @@ export const is_authenticated = async () => {
         throw error;
     }
 };
+
+export const logout = async () =>{
+    try{
+        const response = await api.post('auth/logout/')
+        return response.data
+    }catch(error){
+        console.error('error in logging out: ',error)
+        throw error 
+    }
+}
