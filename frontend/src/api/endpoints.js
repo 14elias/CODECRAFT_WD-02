@@ -68,3 +68,22 @@ export const logout = async () =>{
         throw error 
     }
 }
+
+export const listemployees = async () =>{
+    try{
+        const response = await api.get('employee/create/')
+        return response.data
+    }catch(error){
+        console.error('error in fetching employee: ',error)
+        throw error 
+    }
+}
+
+export const employeedetail = async (id) =>{
+    try{
+        const response = await api.get(`employee/create/${id}`)
+        return response.data
+    }catch(error){
+        console.error('error in fetching employee info')
+    }
+}
