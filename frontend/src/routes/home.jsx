@@ -11,10 +11,10 @@ const Home = () => {
       {/* Main Content */}
       <Box p={5} bgGradient="linear(to-r, teal.400, blue.500)" color="white" minH="100vh">
         <Text fontSize="2xl" fontWeight="bold" mb={5}>
-          Welcome Employee
+          Welcome To Admin Panel
         </Text>
         <VStack spacing={4} align="start">
-          <Text fontSize="lg">This is the home page for employees.</Text>
+          <Text fontSize="lg">This is the home page for Admins.</Text>
           <Text fontSize="lg">Use the navigation bar above to access different sections.</Text>
         </VStack>
       </Box>
