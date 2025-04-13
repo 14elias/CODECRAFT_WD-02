@@ -87,3 +87,32 @@ export const employeedetail = async (id) =>{
         console.error('error in fetching employee info')
     }
 }
+
+export const deleteemployee = async (id) =>{
+    try{
+        const response = await api.delete(`employee/create/${id}`)
+        return response.data
+    }catch(error){
+        console.error('error in deleting employee')
+    }
+}
+
+export const editemployee = async (id,employee) =>{
+    try{
+        const response = await api.patch(`employee/create/${id}`,employee)
+        return response.data
+    }catch (error) {
+        console.error('Error in editing employee information:', error.response?.data || error.message);
+        throw error; // rethrow to catch in component if needed
+      }
+}
+
+export const createemployee = async (employee) =>{
+    try{
+        const response = await api.post(`employee/create/`,employee)
+        return response.data
+    }catch (error) {
+        console.error('Error in creating employee :', error.response?.data || error.message);
+        throw error; // rethrow to catch in component if needed
+}
+}
