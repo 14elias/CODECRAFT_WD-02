@@ -33,7 +33,7 @@ const EmployeeList = () => {
           <Card key={employee.id} onClick={() => navigate(`/employee/${employee.id}`)} _hover={{ cursor: 'pointer', bg: 'gray.50' }}>
             <CardBody>
               <Text fontWeight="bold">{employee.username}</Text>
-              <Text>{employee.email}</Text>
+              <Text>{employee.first_name} {employee.last_name}</Text>
               <Text fontSize="sm" color="gray.500">{employee.role}</Text>
             </CardBody>
           </Card>
