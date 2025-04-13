@@ -5,6 +5,8 @@ import { Routes,Route } from 'react-router-dom'
 import { ChakraProvider } from "@chakra-ui/react";
 import EmployeeList from "./routes/employeeList";
 import EmployeeDetail from "./routes/EmployeeDetail";
+import EditEmployee from "./routes/EditEmployee";
+import CreateEmployee from "./routes/CreateEmployee";
 function App() {
 
   return (
@@ -14,6 +16,8 @@ function App() {
         <Route path="/" element={<ProtectedRoute><Home/></ProtectedRoute>}/>
         <Route path="/employeelist" element={<EmployeeList/>}/>
         <Route path="/employee/:id" element={<EmployeeDetail />} />
+        <Route path="/employee/edit/:id" element={<EditEmployee />} />
+        <Route path="/employee/create" element={<CreateEmployee />} />
       </Routes>
     </ChakraProvider>
   )
