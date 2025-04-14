@@ -29,9 +29,6 @@ const EmployeeNavbar = () => {
           <Link as={RouterLink} to="/employee/create" color="teal.200" _hover={{ textDecoration: 'underline' }}>
             Create Employee
           </Link>
-          <Link as={RouterLink} to="/settings" color="teal.200" _hover={{ textDecoration: 'underline' }}>
-            Settings
-          </Link>
         </Flex>
 
         <Spacer />
